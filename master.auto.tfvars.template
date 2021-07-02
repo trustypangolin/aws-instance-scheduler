@@ -1,0 +1,12 @@
+
+aws_primary_region = "ap-southeast-2"
+
+aws_account_id = {
+  master      = "123456789012"
+}
+
+tags = {
+  Service     = "AWS Instance Scheduler"
+  Environment = "Production"
+  Version     = "1.4.0"
+}
