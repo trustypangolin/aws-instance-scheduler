@@ -10,3 +10,5 @@ terraform {
 terraform {
   required_version = ">= 0.14.0"
 }
+
+data "aws_partition" "current" {}
