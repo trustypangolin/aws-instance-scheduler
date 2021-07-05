@@ -106,6 +106,13 @@ resource "aws_dynamodb_table_item" "period-weekend" {
   item = file("./dynamodb-json/period-weekend.json")
 }
 
+resource "aws_dynamodb_table_item" "period-stoponly" {
+  table_name = aws_dynamodb_table.config-table.name
+  hash_key   = aws_dynamodb_table.config-table.hash_key
+  range_key  = aws_dynamodb_table.config-table.range_key
+  item = file("./dynamodb-json/period-alwaysstop.json")
+}
+
 resource "aws_dynamodb_table_item" "schedule-sydney" {
   table_name = aws_dynamodb_table.config-table.name
   hash_key   = aws_dynamodb_table.config-table.hash_key
@@ -210,7 +217,7 @@ resource "aws_lambda_function" "aws_scheduler_scheduler_function" {
   dead_letter_config {
     target_arn = var.deadletter
   }
-  handler = "aws_scheduler_scheduler_function.lambda_handler"
+  handler = "main.lambda_handler"
   runtime = "python3.8"
   timeout = 900
   role    = aws_iam_role.scheduler_role.arn

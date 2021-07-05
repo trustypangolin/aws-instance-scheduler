@@ -1,5 +1,3 @@
-aws_primary_region = "ap-southeast-2"
-
 resource_prefix = "AWSScheduler_"
 
 tags = {
